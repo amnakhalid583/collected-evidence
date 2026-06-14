@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Collected Evidence</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'IBM Plex Mono',monospace;
+}
+
+body{
+background:#050505;
+overflow:hidden;
+}
+
+.window{
+width:80vw;
+height:80vh;
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:#ffffff;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+
+.topBar{
+height:56px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 24px;
+border-bottom:1px solid rgba(0,0,0,.08);
+font-size:14px;
+font-weight:500;
+letter-spacing:.08em;
+}
+
+.controls{
+display:flex;
+gap:18px;
+font-size:18px;
+color:#444;
+}
+
+.close{
+cursor:pointer;
+}
+
+.close:hover{
+opacity:.55;
+}
+
+.content{
+padding:36px;
+height:calc(80vh - 56px);
+overflow-y:auto;
+}
+
+.exhibit{
+border:1px solid rgba(0,0,0,.08);
+border-radius:14px;
+padding:20px;
+margin-bottom:24px;
+}
+
+.exhibitTitle{
+font-size:14px;
+font-weight:500;
+margin-bottom:16px;
+letter-spacing:.08em;
+}
+
+.preview,
+.placeholder{
+height:220px;
+border-radius:10px;
+margin-bottom:18px;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.preview{
+cursor:pointer;
+border:1px solid rgba(0,0,0,.08);
+}
+
+.preview img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.25s;
+}
+
+.preview:hover img{
+transform:scale(1.02);
+}
+
+.placeholder{
+border:2px dashed rgba(0,0,0,.12);
+color:#888;
+font-size:13px;
+text-align:center;
+padding:20px;
+}
+
+.label{
+font-size:13px;
+font-weight:500;
+margin-top:12px;
+margin-bottom:6px;
+}
+
+.text{
+font-size:14px;
+line-height:1.9;
+color:#333;
+}
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+display:none;
+justify-content:center;
+align-items:center;
+padding:30px;
+z-index:9999;
+cursor:pointer;
+}
+
+.overlay.active{
+display:flex;
+}
+
+.overlay img{
+max-width:90vw;
+max-height:90vh;
+border-radius:14px;
+box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+
+@media(max-width:700px){
+
+.window{
+width:92vw;
+height:88vh;
+}
+
+.content{
+padding:20px;
+}
+
+.preview,
+.placeholder{
+height:160px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div
+class="overlay"
+id="viewer">
+
+<img
+id="viewerImg"
+src=""
+alt="Evidence">
+
+</div>
+
+<div class="window">
+
+<div class="topBar">
+
+<div>
+COLLECTED EVIDENCE
+</div>
+
+<div class="controls">
+
+<span>—</span>
+
+<span>□</span>
+
+<span
+class="close"
+onclick="window.location.href='./menu.html'">
+×
+</span>
+
+</div>
+
+</div>
+
+<div class="content">
+
+<!-- EXHIBIT A -->
+
+<div class="exhibit">
+
+<div class="exhibitTitle">
+EXHIBIT A
+</div>
+
+<div class="placeholder">
+EVIDENCE WITHHELD
+<br>
+BY INVESTIGATOR
+</div>
+
+<div class="label">
+Classification
+</div>
+
+<div class="text">
+Lost Archive
+</div>
+
+<div class="label">
+FILE STATUS
+</div>
+
+<div class="text">
+MISSING
+</div>
+
+<div class="label">
+Description
+</div>
+
+<div class="text">
+The earliest known interaction between investigator and subject could not be recovered.
+</div>
+
+<div class="label">
+Cause
+</div>
+
+<div class="text">
+Original account was deleted.
+</div>
+
+<div class="label">
+Recovery Attempt
+</div>
+
+<div class="text">
+Failed.
+</div>
+
+<div class="label">
+Investigator Note
+</div>
+
+<div class="text">
+Some evidence was never meant to survive. The memories did. Subject was always important to the investigator. The archive simply failed to preserve the beginning.
+</div>
+
+</div>
+
+<!-- EXHIBIT B -->
+
+<div class="exhibit">
+
+<div class="exhibitTitle">
+EXHIBIT B
+</div>
+
+<div
+class="preview"
+onclick="openEvidence('safe-place.png')">
+
+<img
+src="safe-place.png"
+alt="Evidence B">
+
+</div>
+
+<div class="label">
+Classification
+</div>
+
+<div class="text">
+Earliest Surviving Record
+</div>
+
+<div class="label">
+Description
+</div>
+
+<div class="text">
+Previous archives could not be recovered. This document remains the oldest surviving piece of evidence.
+</div>
+
+<div class="label">
+Investigator Note
+</div>
+
+<div class="text">
+Subject described the investigator as:
+<br><br>
+
+"a safe place"
+<br>
+
+"a home"
+<br>
+
+and someone who helped her find parts of herself she thought were gone.
+</div>
+
+<div class="label">
+Archive Date
+</div>
+
+<div class="text">
+Approximately one year old.
+Further analysis became unnecessary.
+</div>
+
+</div>
+
+<!-- EXHIBIT C -->
+
+<div class="exhibit">
+
+<div class="exhibitTitle">
+EXHIBIT C
+</div>
+
+<div
+class="preview"
+onclick="openEvidence('sachme-promise.png')">
+
+<img
+src="sachme-promise.png"
+alt="Evidence C">
+
+</div>
+
+<div class="label">
+Classification
+</div>
+
+<div class="text">
+Emotional Evidence
+</div>
+
+<div class="label">
+Description
+</div>
+
+<div class="text">
+Subject was observed checking on investigator multiple times.
+Despite claiming to be okay herself, subject's first concern remained the investigator.
+</div>
+
+<div class="label">
+Investigator Note
+</div>
+
+<div class="text">
+Subject said:
+<br><br>
+"Sachme promise."
+<br><br>
+Investigator chose to believe her.
+Case remains open.
+</div>
+
+</div>
+
+<!-- EXHIBIT D -->
+
+<div class="exhibit">
+
+<div class="exhibitTitle">
+EXHIBIT D
+</div>
+
+<div
+class="preview"
+onclick="openEvidence('protective.png')">
+
+<img
+src="protective.png"
+alt="Evidence D">
+
+</div>
+
+<div class="label">
+Classification
+</div>
+
+<div class="text">
+Protective Behavior
+</div>
+
+<div class="label">
+Description
+</div>
+
+<div class="text">
+Subject repeatedly attempted to confirm that investigator was actually okay.
+Subject continued asking despite receiving multiple reassurances.
+</div>
+
+<div class="label">
+Investigator Note
+</div>
+
+<div class="text">
+Evidence suggests subject worries about people she loves more than she admits.
+Further observation strongly recommended.
+</div>
+
+</div>
+
+<!-- EXHIBIT E -->
+
+<div class="exhibit">
+
+<div class="exhibitTitle">
+EXHIBIT E
+</div>
+
+<div
+class="preview"
+onclick="openEvidence('pagal.png')">
+
+<img
+src="pagal.png"
+alt="Evidence E">
+
+</div>
+
+<div class="label">
+Classification
+</div>
+
+<div class="text">
+Documented Silliness
+</div>
+
+<div class="label">
+Description
+</div>
+
+<div class="text">
+Subject participated in an extended discussion regarding which member of the family was actually pagaal.
+Scientific findings remain inconclusive.
+</div>
+
+<div class="label">
+Investigator Note
+</div>
+
+<div class="text">
+The phrase:
+<br><br>
+"MUMMY KI BACCHI KI MUMMY PAGAL HAI"
+<br><br>
+has been archived for future generations.
+</div>
+
+</div>
+
+<!-- EXHIBIT F -->
+
+<div class="exhibit">
+
+<div class="exhibitTitle">
+EXHIBIT F
+</div>
+
+<div class="placeholder">
+RESTRICTED
+<br>
+EVIDENCE
+</div>
+
+<div class="label">
+Classification
+</div>
+
+<div class="text">
+Protected Evidence
+</div>
+
+<div class="label">
+Description
+</div>
+
+<div class="text">
+The investigator has chosen not to submit this evidence.
+</div>
+
+<div class="label">
+Reason
+</div>
+
+<div class="text">
+The subject trusted the investigator.
+That trust will not become an exhibit.
+</div>
+
+<div class="label">
+Evidence Summary
+</div>
+
+<div class="text">
+Recovered fact:
+<br><br>
+Subject cares more than she says.
+Investigator has known this for a long time.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const viewer =
+document.getElementById("viewer");
+
+const viewerImg =
+document.getElementById("viewerImg");
+
+function openEvidence(image){
+
+viewerImg.src = image;
+viewer.classList.add("active");
+
+}
+
+viewer.addEventListener(
+"click",
+function(){
+
+viewer.classList.remove("active");
+viewerImg.src = "";
+
+}
+);
+
+</script>
+
+</body>
+</html>
